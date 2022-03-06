@@ -1,12 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { BsHouseDoor } from "react-icons/bs";
+import { BsPlusSquare } from "react-icons/bs";
+import { BiUser } from "react-icons/bi";
 
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <Link to="/" className="navbar-brand">
           Codigram22
-        </a>
+        </Link>
         <form className="d-flex">
           <input
             className="form-control me-2"
@@ -33,14 +37,14 @@ const Navbar = () => {
           <div className="me-auto"></div>
           <ul className="navbar-nav mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-                Home
-              </a>
+              <Link to="/" className="nav-link active" aria-current="page">
+                <BsHouseDoor fontSize={30} />
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                Create
-              </a>
+              <Link className="nav-link" to="/posts/create">
+                <BsPlusSquare fontSize={30} />
+              </Link>
             </li>
             <li className="nav-item dropdown">
               <a
@@ -51,16 +55,16 @@ const Navbar = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                User
+                <BiUser fontSize={30} />
               </a>
               <ul
                 className="dropdown-menu dropdown-menu-end"
                 aria-labelledby="navbarDropdown"
               >
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/account">
                     Account
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <hr className="dropdown-divider" />
