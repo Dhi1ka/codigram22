@@ -15,8 +15,8 @@ const Posts = () => {
     <>
       {posts.map((post) => {
         return (
-          <div className="card mt-2">
-            <img src="..." className="card-img-top" alt="..." />
+          <div className="card mt-3" key={post.id}>
+            <img src={post.image} className="card-img-top" alt="..." />
             <div className="card-body">
               <p>{post.user}</p>
               <p>{post.title}</p>

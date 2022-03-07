@@ -19,3 +19,25 @@ export const createPost = (result) => async (dispatch) => {
     console.error(error);
   }
 };
+
+export const updatePost = (id, result) => async (dispatch) => {
+  try {
+    const { data } = await api.updatePost(id, result);
+
+    dispatch({ type: "UPDATE", payload: data });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const deletePost = (id) => async (dispatch) => {
+  try {
+    await api.deletePost(id);
+
+    dispatch({ type: "DELETE", payload: id });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const likePost = (id) => async (dispatch) => {};
