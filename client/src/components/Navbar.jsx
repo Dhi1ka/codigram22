@@ -2,11 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { BsHouseDoor } from "react-icons/bs";
 import { BsPlusSquare } from "react-icons/bs";
-import { BiUser } from "react-icons/bi";
+import { BiUser, BiLogIn } from "react-icons/bi";
+import { FcSearch, FcHome } from "react-icons/fc";
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light sticky-top bg-light">
       <div className="container-fluid">
         <Link to="/" className="navbar-brand">
           Codigram22
@@ -18,8 +19,8 @@ const Navbar = () => {
             placeholder="Search"
             aria-label="Search"
           />
-          <button className="btn btn-outline-success" type="submit">
-            Search
+          <button className="btn btn-outline-secondary" type="submit">
+            <FcSearch />
           </button>
         </form>
         <button
@@ -38,44 +39,56 @@ const Navbar = () => {
           <ul className="navbar-nav mb-2 mb-lg-0">
             <li className="nav-item">
               <Link to="/" className="nav-link active" aria-current="page">
-                <BsHouseDoor fontSize={30} />
+                <FcHome fontSize={30} />
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/posts/create">
-                <BsPlusSquare fontSize={30} />
-              </Link>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <BiUser fontSize={30} />
-              </a>
-              <ul
-                className="dropdown-menu dropdown-menu-end"
-                aria-labelledby="navbarDropdown"
-              >
-                <li>
-                  <Link className="dropdown-item" to="/account">
-                    Account
+            {user ? (
+              <li className="nav-item">
+                <Link className="nav-link" to="/posts/create">
+                  <BsPlusSquare fontSize={30} />
+                </Link>
+              </li>
+            ) : null}
+            {user ? (
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <BiUser fontSize={30} />
+                </a>
+                <ul
+                  className="dropdown-menu dropdown-menu-end"
+                  aria-labelledby="navbarDropdown"
+                >
+                  <li>
+                    <Link className="dropdown-item" to="/account">
+                      Account
+                    </Link>
+                  </li>
+                  <li>
+                    <hr className="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Logout
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            ) : (
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <Link to="login" className="nav-link">
+                    <BiLogIn fontSize={30} />
                   </Link>
                 </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Logout
-                  </a>
-                </li>
               </ul>
-            </li>
+            )}
           </ul>
         </div>
       </div>

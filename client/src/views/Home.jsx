@@ -4,10 +4,10 @@ import Navbar from "../components/Navbar";
 import Posts from "../components/Posts/Posts";
 import Footer from "../components/Footer";
 
-const Home = () => {
+const Home = ({ user }) => {
   return (
     <div>
-      <Navbar />
+      <Navbar user={user} />
       <div className="container">
         <Posts />
       </div>
