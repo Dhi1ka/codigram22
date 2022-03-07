@@ -4,7 +4,7 @@ const { tokenGenerator } = require("../helpers/jwt");
 class UserController {
   static async getUsers(req, res) {
     try {
-      let users = await user.findAll({});
+      let users = await user.findAll();
 
       res.status(200).json(users);
     } catch (error) {
